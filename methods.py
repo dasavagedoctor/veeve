@@ -98,8 +98,8 @@ def get_res(yt):
     while desired_res not in res:
         desired_res = input(Fore.RED + "Please enter a valid argument: " + Style.RESET_ALL).strip()
 
-    #returns the desired resolution as an integer
-    return int(desired_res[:-1])
+    #returns the desired resolution 
+    return desired_res
 
 #-------------------------------------------------
 #downloads the video at the set resolution
@@ -110,8 +110,8 @@ def download_video(yt, res, output_path):
     try:
         stream.download(output_path= output_path)
         print(Fore.LIGHTYELLOW_EX + f"\n{yt.title} has been successfully downloaded!" + Style.RESET_ALL)
-    except Exception as e:
-        print(e)
+    except:
+        print(Fore.RED + "The selected resolution seems to be unavailable, choose a lower resolution!" + Style.RESET_ALL)
     
 
 #-------------------------------------------------
@@ -126,9 +126,9 @@ def video():
 
 
     #get all the available resolutions
-    get_res(yt)
+    resolution = get_res(yt)
 
-    download_video(yt, get_res, download_path)
+    download_video(yt, resolution, download_path)
 
 
 #-------------------------------------------------
