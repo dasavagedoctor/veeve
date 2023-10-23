@@ -143,7 +143,7 @@ def playlist():
 
     for video in playlist.videos:
         stream = video.streams.get_highest_resolution()
-        stream.download(output_path=output_path)
+        stream.download(output_path=download_path+f"/{playlist.title}")
 
 
 
